@@ -10,3 +10,8 @@ Get-MailboxDatabase -Status | select Name,DatabaseSize,AvailableNewMailboxSpace
 ##formated
 Get-MailboxDatabase -Status | sort name | select name,@{Name='DB Size (Gb)';Expression={$_.DatabaseSize.ToGb()}},@{Name='Available New Mbx Space Gb)';Expression={$_.AvailableNewMailboxSpace.ToGb()}}
 
+#Get Inbox Server Rules
+get-mailbox "MegaUser" | get-inboxrule | fl
+
+#get mailbox folder statistics 
+get-mailbox "MegaUser" | get-mailboxfolderstatistics | select name, foldersize, itemsinfolder
