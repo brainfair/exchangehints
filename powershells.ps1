@@ -15,3 +15,9 @@ get-mailbox "MegaUser" | get-inboxrule | fl
 
 #get mailbox folder statistics 
 get-mailbox "MegaUser" | get-mailboxfolderstatistics | select name, foldersize, itemsinfolder
+
+#update GAL
+Update-GlobalAddressList -Identity "Default Global Address List"
+
+#update OAB
+Update-OfflineAddressBook -Identity MyOABName
