@@ -23,7 +23,7 @@ Update-GlobalAddressList -Identity "Default Global Address List"
 Update-OfflineAddressBook -Identity MyOABName
 
 #show journaled databases
-Get-mailboxdatabase | where {$_.journalrecipient -ne $null | select name, journal*
+Get-mailboxdatabase | where {$_.journalrecipient -ne $null } | select name, journal*
 
 #clear journaled settings
-Get-mailboxdatabase | where {$_.journalrecipient -ne $null | select name, journal* | set-mailboxdatabase -journalrecipient $null
+Get-mailboxdatabase | where {$_.journalrecipient -ne $null } | select name, journal* | set-mailboxdatabase -journalrecipient $null
