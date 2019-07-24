@@ -27,3 +27,11 @@ Get-mailboxdatabase | where {$_.journalrecipient -ne $null } | select name, jour
 
 #clear journaled settings
 Get-mailboxdatabase | where {$_.journalrecipient -ne $null } | select name, journal* | set-mailboxdatabase -journalrecipient $null
+
+
+#get-mailbox folder permission example junk
+Get-MailboxFolderPermission -identity "user:\Junk E-Mail"
+Get-MailboxFolderPermission -identity "user:\Нежелательная почта"
+
+#Add or Set mailbox folder permissions
+Set-MailboxfolderPermissions -identity "user:\Junk E-Mail" -user megauser -accessrights readitems, editowneditems, editallitems, foldervisible
